@@ -1,6 +1,32 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const PuzzlePiece = ({ title, color, x, y, onClick, position }) => {
+type Position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+
+interface Piece {
+    id: string;
+    title: string;
+    color: string;
+    position: Position;
+    x: number;
+    y: number;
+    details: string;
+}
+
+const PuzzlePiece = ({ 
+    title, 
+    color, 
+    x, 
+    y, 
+    onClick, 
+    position 
+}: {
+    title: string;
+    color: string;
+    x: number;
+    y: number;
+    onClick: () => void;
+    position: Position;
+}) => {
     // Same puzzle piece shapes but simplified content
     const paths = {
         'top-left': `M ${x},${y} 
@@ -38,9 +64,9 @@ const PuzzlePiece = ({ title, color, x, y, onClick, position }) => {
 };
 
 const PuzzleView = () => {
-    const [selectedPiece, setSelectedPiece] = useState(null);
+    const [selectedPiece, setSelectedPiece] = useState<Piece | null>(null);
 
-    const pieces = [
+    const pieces: Piece[] = [
         {
             id: 'kelly-westra',
             title: 'Kelly & Westra',

@@ -1,5 +1,4 @@
 // App.tsx
-import React from 'react';
 import PuzzleView from './Puzzle.tsx';
 import CaseStudyExplorer from './CaseStudy.tsx';
 
